@@ -3,5 +3,5 @@
 https://adventofcode.com/
 
 ```sh
-cargo run advent-01
+cargo watch -c -x 'run --bin advent-01 < input.txt'
 ```

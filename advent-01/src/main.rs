@@ -1,17 +1,17 @@
-use std::ops::Add;
+use std::io::Read;
 use std::str::FromStr;
 
 fn main() {
-    let content = std::fs::read_to_string("./input.txt").unwrap();
+    let mut input = String::new();
+    std::io::stdin().read_to_string(&mut input).unwrap();
 
-    let mut elves_calories = content
+    let mut elves_calories = input
         .split("\n\n")
         .map(|s| {
-            s.split("\n")
+            s.lines()
                 .map(u32::from_str)
                 .map(Result::unwrap_or_default)
-                .reduce(u32::add)
-                .unwrap_or_default()
+                .sum::<u32>()
         })
         .collect::<Vec<_>>();
 
@@ -19,8 +19,8 @@ fn main() {
     elves_calories.reverse();
 
     // part1
-    dbg!(elves_calories[0]);
+    println!("part1: {}", elves_calories[0]);
 
     // part2
-    dbg!(elves_calories[0] + elves_calories[1] + elves_calories[2]);
+    println!("part2: {}", elves_calories.iter().take(3).sum::<u32>());
 }
