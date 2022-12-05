@@ -1,5 +1,5 @@
 use std::ops::RangeInclusive;
-use std::str::{FromStr, ParseBoolError};
+use std::str::FromStr;
 
 fn parse_range(s: &str) -> RangeInclusive<u32> {
     let v = s
